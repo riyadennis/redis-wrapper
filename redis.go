@@ -6,8 +6,6 @@ import (
 )
 
 type Storage interface {
-	Create() (*Client, error)
-	Ping(client *redis.Client) (error)
 	Get(key string) (string, error)
 	Set(key, value string, lifeTime time.Duration) error
 	Delete(key string) error
