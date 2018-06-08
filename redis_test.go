@@ -27,3 +27,15 @@ func TestClient_Set(t *testing.T) {
 	err = cr.Set("sample", "value", 0)
 	assert.NoError(t, err)
 }
+
+func TestClient_Delete(t *testing.T) {
+	c := Client{}
+	cr, err := c.Create()
+	assert.NoError(t, err)
+	err = cr.Set("sample", "value", 0)
+	assert.NoError(t, err)
+	err = cr.Delete("sample")
+	assert.NoError(t,err)
+	val, _ := cr.Get("sample")
+	assert.Empty(t, val)
+}
